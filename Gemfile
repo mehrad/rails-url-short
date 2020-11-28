@@ -68,7 +68,10 @@ group :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'faker'
-
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'main'
+  end
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

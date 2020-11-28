@@ -14,18 +14,14 @@ class Url < ApplicationRecord
       self.short_url = 6.times.map{chars.sample}.join until Url.find_by_short_url(self.short_url).nil?
     end
 
-    def find_duplicate
-      Url.find_by_sanitized_url(self.sanitized_url)
-    end
-
-    def new_url?
-      find_duplicate.nil?
-    end
-
     def sanitize
       self.url.strip!
       self.sanitized_url = self.url.downcase.gsub(/(https?:\/\/)|(www\.)/, "")
       self.sanitized_url.slice!(-1) if self.sanitized_url[-1] == "/"
       self.sanitized_url = "http://#{self.sanitized_url}"
+    end
+
+    def short_url_admin
+      "#{self.short_url}+"
     end
 end

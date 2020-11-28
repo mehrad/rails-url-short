@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_084557) do
     t.string "name"
     t.text "url"
     t.string "short_url"
-    t.integer "click_count"
+    t.integer "click_count", default: 0
     t.datetime "expiration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
