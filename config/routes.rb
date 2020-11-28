@@ -5,6 +5,7 @@ class UrlAdminConstraint
 end
 
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'urls#index'
 
   # Like bit.ly add + at end of to see the shortened panel

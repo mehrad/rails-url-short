@@ -12,3 +12,14 @@
       | Your shortened URL is: &nbsp;
       span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="bottom" #{request.base_url}/#{@url.short_url}
     br
+    br
+
+    - if current_user.present?
+      p
+        = current_user.email
+        | Here click count for this link
+        | Check out your other links
+    - else
+      p
+        = link_to 'Sign in', new_user_session_path
+        = link_to 'Register', new_user_session_path
