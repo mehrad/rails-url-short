@@ -15,3 +15,7 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+require('./hello_react')
+require('bootstrap')
+import 'bootstrap/dist/css/bootstrap'

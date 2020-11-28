@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  .container
+    div class=("alert #{key == 'notice' ? 'alert-primary' : 'alert-danger'}") role="alert"
+      = value
+      button.close aria-label="Close" data-dismiss="alert" type="button"
+        span aria-hidden="true"  ×

@@ -1,0 +1,13 @@
+/! app/views/shared/_navigation.html.erb
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-5
+  .container
+    = link_to "Rails React Example", root_path, class: "navbar-brand"
+    button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button" 
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse.justify-content-end
+      ul.navbar-nav
+        li.nav-item
+          - if user_signed_in?
+            = link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link")
+          - else
+            = link_to('Login', new_user_session_path, class: "nav-link")
