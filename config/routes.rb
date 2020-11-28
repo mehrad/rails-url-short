@@ -1,6 +1,5 @@
 class UrlAdminConstraint
   def matches?(request)
-    puts request[:short_url]
     request[:short_url][-1] == '+'
   end
 end

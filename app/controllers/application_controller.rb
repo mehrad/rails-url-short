@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         render file: "#{Rails.root}/public/404", status: :not_found
     end
 
-    def render_404
+    def render_400
         render file: "#{Rails.root}/public/400", status: :bad_request
     end
 end

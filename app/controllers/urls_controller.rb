@@ -11,7 +11,7 @@ class UrlsController < ApplicationController
     end
 
     def create
-      bad_request and return if url_params[:url].nil?
+      return if url_params[:url].nil?
 
       @url = Url.new(url_params)
       @url.sanitize
