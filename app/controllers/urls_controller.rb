@@ -14,7 +14,7 @@ class UrlsController < ApplicationController
       @url = Url.find_by_short_url(params[:short_url])
       not_found and return if @url.nil?
 
-      # TODO(Mahrad): Add this line to sidekiq
+      # TODO(Mahrad): UrlAddCountWorker.perform_async(@url.id)
       @url.add_click_count!
       redirect_to @url.sanitized_url
     end

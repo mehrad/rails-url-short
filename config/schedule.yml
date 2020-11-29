@@ -1,0 +1,11 @@
+#config/schedule.yml
+
+old_link_remover_job:
+  cron: "* * * */5 *" # Every 5th months
+  class: "RemoveOldLinksWorker"
+  queue: default
+
+old_link_email_warn_job:
+  cron: "* * * */2 *" # Every 2th months
+  class: "OldLinkWarnEmailSender"
+  queue: default
