@@ -1,4 +1,4 @@
-class RemoveOldLinksWorker
+class OldLinkWarnEmailSender
     include Sidekiq::Worker
 
     def perform(*args)
