@@ -14,6 +14,8 @@ class UrlsController < ApplicationController
       @url = Url.find_by_short_url(params[:short_url])
       not_found and return if @url.nil?
 
+      # TODO(Mahrad): Add this line to sidekiq
+      @url.add_click_count!
       redirect_to @url.sanitized_url
     end
 
@@ -23,7 +25,11 @@ class UrlsController < ApplicationController
       @url = Url.new(url_params)
       @url.sanitize
 
-      redirect_to shortened_path(@url.short_url_admin) and return if @url.save
+      if @url.save
+        current_user.urls << @url
+        redirect_to shortened_path(@url.short_url_admin)
+        return
+      end
 
       flash[:error] = "Check the error below:"
       render 'index'

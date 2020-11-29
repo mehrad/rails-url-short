@@ -24,5 +24,11 @@ Rails.application.routes.draw do
 
   resources :urls, only: :create
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :url_items, only: [:index, :show, :create, :update, :destroy], param: :short_url
+    end
+  end
+
 end
 

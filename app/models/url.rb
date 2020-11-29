@@ -31,4 +31,10 @@ class Url < ApplicationRecord
     def short_url_admin
       "#{self.short_url}+"
     end
+
+    def add_click_count!
+      self.click_count +=1
+      self.save!
+    end
+
 end

@@ -31,6 +31,10 @@ gem 'slim'
 # Postgres
 gem 'pg'
 
+# Sidekiq
+gem 'sidekiq'
+
+# Bootstrap
 gem 'font-awesome-sass'
 gem 'bootstrap-sass'
 
