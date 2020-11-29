@@ -32,6 +32,9 @@ gem 'pg'
 # Sidekiq
 gem 'sidekiq'
 
+# Sidekiq cron to schedule link clean up worker based on expiration in model or last updated time
+gem "sidekiq-cron", "~> 1.1"
+
 # Bootstrap
 gem 'font-awesome-sass'
 gem 'bootstrap-sass'
