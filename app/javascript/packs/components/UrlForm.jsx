@@ -21,7 +21,6 @@ class UrlForm extends React.Component {
       .post('/api/v1/url_items', {
         url_item: {
           url: this.urlRef.current.value,
-          short_url: this.shortUrlRef.current.value,
         },
       })
       .then(response => {
@@ -47,16 +46,6 @@ class UrlForm extends React.Component {
             className="form-control"
             id="url"
             placeholder="Write your url here..."
-            />
-          </div>
-          <div className="form-group col-md-4">
-            <input
-            type="text"
-            name="short_url"
-            ref={this.shortUrlRef}
-            className="form-control"
-            id="short_url"
-            placeholder="If you want write your short url here..."
             />
           </div>
           <div className="form-group col-md-4">

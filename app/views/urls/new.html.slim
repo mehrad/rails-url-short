@@ -1,6 +1,7 @@
-.col-md-6.col-md-offset-3
-  .main-card
-    h2.text-center Shrink your links!
-    = form_for @url, html: { class: "text-center" } do |f|
+
+= form_for @url, html: { class: "form-inline" } do |f|
+  div classname="form-inline"
+    div classname=("form-group col-md-4")
       = f.text_field :url, as: :string, placeholder: "Enter the URL you want to shorten...", label: false
-      = f.submit "Shorten!", class: "btn btn-green"
+    div classname=("form-group col-md-4")
+      = f.submit "Shorten!", class: "btn btn-outline-success btn-block"

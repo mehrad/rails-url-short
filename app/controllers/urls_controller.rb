@@ -30,8 +30,8 @@ class UrlsController < ApplicationController
         return
       end
 
-      flash[:error] = "Check the error below:"
-      render 'index'
+      flash[:error] = "Check the error below: #{@url.errors.messages}"
+      render 'new'
     end
 
     def shortened
