@@ -10,7 +10,7 @@ class UrlItem extends React.Component {
   render() {
     const { urlItem } = this.props
     return (
-      <tr className={`${this.state.complete ? 'table-light' : ''}`}>
+      <tr className='table-light'>
         <td>
           <input
             type="text"
@@ -23,7 +23,7 @@ class UrlItem extends React.Component {
         <td>
           <input
             type="text"
-            defaultValue={urlItem.short_url}
+            defaultValue={`${window.location.href}${urlItem.short_url}`}
             disabled={true}
             className="form-control"
             id={`urlItem__short_url-${urlItem.short_url}`}

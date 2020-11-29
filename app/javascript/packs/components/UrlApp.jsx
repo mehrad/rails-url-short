@@ -6,6 +6,7 @@ import axios from "axios";
 
 import UrlItems from "./UrlItems";
 import UrlItem from "./UrlItem";
+import UrlForm from "./UrlForm";
 
 class UrlApp extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class UrlApp extends React.Component {
             urlItems: []
         };
         this.getUrlItems = this.getUrlItems.bind(this);
+        this.createUrlItem = this.createUrlItem.bind(this);
     }
 
     componentDidMount() {
@@ -32,13 +34,21 @@ class UrlApp extends React.Component {
           });
     }
 
+    createUrlItem(urlItem) {
+      const urlItems = [urlItem, ...this.state.urlItems];
+      this.setState({ urlItems });
+    }
+
     render() {
         return (
+          <>
+            <UrlForm createUrlItem={this.createUrlItem} />
             <UrlItems>
               {this.state.urlItems.map(urlItem => (
                 <UrlItem key={urlItem.short_url} urlItem={urlItem} />
               ))}
             </UrlItems>
+          </>
         );
     }
 }

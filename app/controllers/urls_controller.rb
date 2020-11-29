@@ -26,7 +26,6 @@ class UrlsController < ApplicationController
       @url.sanitize
 
       if @url.save
-        current_user.urls << @url
         redirect_to shortened_path(@url.short_url_admin)
         return
       end

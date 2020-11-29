@@ -1,7 +1,6 @@
 .col-md-6.col-md-offset-3
   .main-card
     h2.text-center Shrink your links!
-    h4.text-center A simple URL shortener. With real dragons!
     = form_for @url, html: { class: "text-center" } do |f|
       = f.text_field :url, as: :string, placeholder: "Enter the URL you want to shorten...", label: false
       = f.submit "Shorten!", class: "btn btn-green"
