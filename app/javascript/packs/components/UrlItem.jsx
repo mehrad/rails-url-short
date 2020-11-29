@@ -2,11 +2,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import axios from "axios";
+import setAxiosHeaders from "./AxiosHeaders";
 class UrlItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {};
+
+    this.handleDestroy = this.handleDestroy.bind(this);
+    this.path = `/api/v1/url_items/${this.props.urlItem.short_url}`;
   }
+
+  handleDestroy() {
+    setAxiosHeaders();
+    var $this = this
+    const confirmation = confirm("Are you sure?");
+    if (confirmation) {
+      axios
+        .delete(this.path)
+        .then(response => {
+          $this.props.getUrlItems();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
     const { urlItem } = this.props
     return (
@@ -37,7 +59,12 @@ class UrlItem extends React.Component {
             </div>
         </td>
         <td className="text-right">
-          <button className="btn btn-outline-danger">Delete</button>
+          <button
+            className="btn btn-outline-danger"
+            onClick={this.handleDestroy}
+            >
+              Delete
+          </button>
         </td>
       </tr>
     )
@@ -47,5 +74,6 @@ class UrlItem extends React.Component {
 export default UrlItem
 
 UrlItem.propTypes = {
-  UrlItem: PropTypes.object.isRequired,
+  urlItem: PropTypes.object.isRequired,
+  getUrlItems: PropTypes.func.isRequired
 }

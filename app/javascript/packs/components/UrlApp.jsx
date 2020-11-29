@@ -45,7 +45,11 @@ class UrlApp extends React.Component {
             <UrlForm createUrlItem={this.createUrlItem} />
             <UrlItems>
               {this.state.urlItems.map(urlItem => (
-                <UrlItem key={urlItem.short_url} urlItem={urlItem} />
+                <UrlItem
+                  key={urlItem.short_url}
+                  urlItem={urlItem}
+                  getUrlItems={this.getUrlItems}
+                />
               ))}
             </UrlItems>
           </>
