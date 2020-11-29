@@ -21,14 +21,16 @@ class UrlForm extends React.Component {
       .post('/api/v1/url_items', {
         url_item: {
           url: this.urlRef.current.value,
+          short_url: this.shortUrlRef.current.value,
         },
       })
       .then(response => {
         const urlItem = response.data
         $this.props.createUrlItem(urlItem)
+        $this.props.clearErrors();
       })
       .catch(error => {
-        console.log(error)
+        $this.props.handleErrors(error);
       })
     e.target.reset()
   }
@@ -49,6 +51,16 @@ class UrlForm extends React.Component {
             />
           </div>
           <div className="form-group col-md-4">
+            <input
+              type="text"
+              name="short_url"
+              ref={this.shortUrlRef}
+              className="form-control"
+              id="short_url"
+              placeholder="If you want write your short url here..."
+              />
+          </div>
+          <div className="form-group col-md-4">
             <button className="btn btn-outline-success btn-block">
               Shorten!
             </button>
@@ -63,4 +75,6 @@ export default UrlForm
 
 UrlForm.propTypes = {
   createUrlItem: PropTypes.func.isRequired,
+  handleErrors: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 }
