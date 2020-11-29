@@ -23,6 +23,7 @@ class UrlsController < ApplicationController
       return if url_params[:url].nil?
 
       @url = Url.new(url_params)
+      @url.set_short_url
       @url.sanitize
 
       if @url.save

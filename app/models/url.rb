@@ -6,13 +6,12 @@ class Url < ApplicationRecord
     validates :url, presence: true, on: :create
     validates_format_of :url,
       with: /\A(?:(?:http|https):\/\/)?([-a-zA-Z0-9.]{2,256}\.[a-z]{2,4})\b(?:\/[-a-zA-Z0-9@,!:%_\+.~#?&\/\/=]*)?\z/
-    validates :short_url, uniqueness: true
-    before_create :generate_short_url
+    validates :short_url, uniqueness: true,  presence: true
 
     paginates_per 20
 
-    def generate_short_url
-      return if !self.short_url.nil?
+    def set_short_url
+      return if !self.short_url.blank?
 
       self.short_url = generate_short_url
 

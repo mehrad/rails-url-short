@@ -12,6 +12,7 @@ class Api::V1::UrlItemsController < ApplicationController
 
     def create
         @url_item = current_user.urls.build(url_item_params)
+        @url_item.set_short_url
         @url_item.sanitize
 
         if authorized?
