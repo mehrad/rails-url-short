@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 class UrlAdminConstraint
   def matches?(request)
     request[:short_url][-1] == '+'
