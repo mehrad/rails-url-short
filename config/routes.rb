@@ -6,7 +6,14 @@ end
 
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'urls#index'
+
+  authenticated :user do
+    root "urls#my_url", as: :authenticated_root
+  end
+
+  unauthenticated :user do
+    root to: 'urls#new'
+  end
 
   # Like bit.ly add + at end of to see the shortened panel
   constraints(UrlAdminConstraint.new) do
@@ -16,5 +23,6 @@ Rails.application.routes.draw do
   get "/:short_url", to: "urls#show"
 
   resources :urls, only: :create
+
 end
 

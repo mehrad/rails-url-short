@@ -1,6 +1,13 @@
 class UrlsController < ApplicationController
-    def index
+
+    def new
       @url = Url.new
+    end
+
+    def my_url
+      @urls = current_user.urls.page params[:page]
+      @new_url = Url.new
+      render 'my_url'
     end
 
     def show
